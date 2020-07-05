@@ -1,52 +1,67 @@
-import React, { useEffect } from 'react';
-import { Route} from 'react-router-dom'
-import { get } from "lodash";
-import Dashboard from './pages/dashboard'
+import React, { lazy, Suspense } from "react";
+import { Layout } from "antd";
+import { Route, Switch } from 'react-router-dom'
 import './App.css';
 import Header from "./pages/sharedComponents/header";
+import ErrorHandler from "./pages/sharedComponents/ErrorHandler";
+import Progress from "./pages/sharedComponents/Progress";
+
+import styled from "styled-components";
 import 'antd/dist/antd.css'
-import '@aws-amplify/ui/dist/style.css';
 
-import Amplify, { Auth } from "aws-amplify";
-import awsconfig from "./awsconfig";
-import "./auth";
-import store from "./store";
-import { SIGNIN_SUCCESS } from "./modules/constants";
-import { withAuthenticator, SignIn, SignUp, ForgotPassword, RequireNewPassword, VerifyContact } from 'aws-amplify-react';
-
-class CustomNoSignUp extends SignUp {
-  render() {
-    if (this.props.authState !== 'signUp') { return null; }
-    return (<div>Please check with your administrator to create a user</div>);
-  }
-}
-
-Amplify.configure(awsconfig());
-Auth.currentSession().then(({idToken}) => store.dispatch({ type: SIGNIN_SUCCESS, payload: get(idToken, "payload")}));
+const ProductLists = lazy(() => import("./pages/Products"));
+const NewProductPage = lazy(() => import("./pages/Products/new"));
+const ShowProductPage = lazy(() => import("./pages/Products/show"));
+const EditProductPage = lazy(() => import("./pages/Products/edit"));
 
 function App() {
   return (
-    <div className="App">
+    <StyledLayout>
       <Header/>
-      <Authenticator/>
-    </div>
+      <Wrapper>
+        <ErrorHandler>
+          <Router/>
+        </ErrorHandler>
+      </Wrapper>
+    </StyledLayout>
   );
 }
 
 const Router = () => {
-  return  <main>
-  <Route exact path="/" component={Dashboard} />
-  </main>
+  return (
+    <Suspense fallback={<Progress />}>
+      <Switch>
+        <Route exact path="/" component={ProductLists} />
+        <Route exact path="/products" component={ProductLists} />
+        <Route exact path="/products/new" component={NewProductPage} />
+        <Route exact path="/products/:id" component={ShowProductPage} />
+        <Route exact path="/products/:id/edit" component={EditProductPage} />
+      </Switch>
+    </Suspense>
+  );
 };
 
-const Authenticator = withAuthenticator(Router, true,
-  [
-    <SignIn />,
-    <CustomNoSignUp/>,
-    <ForgotPassword/>,
-    <RequireNewPassword/>,
-    <VerifyContact/>
-  ]
-);
+
+const StyledLayout = styled(Layout)`
+  background: white;
+  .fixed-header {
+    top: 0px !important;
+  }
+  margin-top: 0px;
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 90%;
+  margin: auto;
+
+  h1 {
+    justify-content: center;
+    display: flex;
+    b {
+      margin-left: 5px;
+    }
+  }
+`;
 
 export default App;

@@ -1,7 +1,5 @@
-import dashBoardReducer from "./dashboard";
-import auth from "./auth";
+import productReducer from "./product";
 
 export default {
-  dashBoard: dashBoardReducer,
-  auth
+  product: productReducer
 };

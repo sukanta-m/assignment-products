@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import { Input } from "antd";
 
 const Search = ({
@@ -13,11 +14,15 @@ const Search = ({
 
   return (
     <Input
-      placeholder="Search by Name, Phone, Email, Order id"
+      placeholder="Search"
       onChange={handleChange}
       value={searchTxt}
     />
   )
 };
+
+Search.propTypes = {
+  onChange: PropTypes.func.isRequired
+}
 
 export default Search;

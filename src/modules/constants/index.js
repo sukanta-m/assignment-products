@@ -1,12 +1,20 @@
-export const FTECH_ORDER_REQUEST = "[order details] fetch order request";
-export const FTECH_ORDER_REQUEST_SUCCESS = "[order details] fetch order request suceess";
-export const FTECH_ORDER_REQUEST_FAILURE = "[order details] fetch order request failure";
-export const UPDATE_ORDER_STATUS_REQUEST = "[order status] update order status request";
-export const UPDATE_ORDER_STATUS_REQUEST_SUCCESS = "[order status] update order status success";
-export const UPDATE_ORDER_STATUS_REQUEST_FAILURE = "[order status] update order status failure";
-export const CLEAR_DASHBOARD_ERROR = "[order error] clear error";
-export const SIGNIN_SUCCESS = "[auth] signin succeess";
-export const SIGNIN_FAILURE = "[auth] signin failure";
-export const SIGNUP_SUCCESS = "[auth] signup success ";
-export const SIGNUP_FAILURE = "[auth] signup failure ";
-export const LOGOUT = "[auth] logout ";
+export const FTECH_PRODUCTS_REQUEST = "[product] fetch products request";
+export const FTECH_PRODUCTS_SUCCESS = "[product] fetch products suceess";
+export const FTECH_PRODUCTS_FAILURE = "[product] fetch products failure";
+
+export const CREATE_PRODUCT_REQUEST = "[product] create products request";
+export const CREATE_PRODUCT_SUCCESS = "[product] create products suceess";
+export const CREATE_PRODUCT_FAILURE = "[product] create products failure";
+
+export const UPDATE_PRODUCT_REQUEST = "[product] update products request";
+export const UPDATE_PRODUCT_SUCCESS = "[product] update products suceess";
+export const UPDATE_PRODUCT_FAILURE = "[product] update products failure";
+
+
+export const DELETE_PRODUCT_REQUEST = "[product] delete products request";
+export const DELETE_PRODUCT_SUCCESS = "[product] delete products suceess";
+export const DELETE_PRODUCT_FAILURE = "[product] delete products failure";
+
+export const FETCH_PRODUCT_REQUEST = "[product] fetch product request";
+export const FETCH_PRODUCT_SUCCESS = "[product] fetch product suceess";
+export const FETCH_PRODUCT_FAILURE = "[product] fetch product failure";

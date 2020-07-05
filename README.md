@@ -1,17 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## install
+   ```npm install -g json-server``` and run ``` json-server --watch db.json ``` in separate terminal
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `export env variables`
-export REACT_APP_HOST_URL=< api host url ><br />
-export REACT_APP_X_API_KEY=<x_api_key><br />
-export REACT_APP_AWS_COGNITO_IDENTITYPOLLID=< aws cognito identity pollid ><br />
-export REACT_APP_AWS_COGNITO_REGION=< aws cognito region ><br />
-export REACT_APP_AWS_USER_POLLID=< aws user pollid ><br />
-export REACT_APP_AWS_USER_POLL_WEB_CLIENTID=< aws user poll web client ><br />
-export REACT_APP_AWS_AUTHENTICATION_FLOW_TYPE=< aws authentication flow type >
+### `env variables`
+add env variable ```REACT_APP_HOST_URL=< api host url >``` in `.env` file in root dir<br />
 
 ### `yarn start`
 
